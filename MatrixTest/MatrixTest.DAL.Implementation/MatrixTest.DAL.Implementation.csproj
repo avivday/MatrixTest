@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Dev</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{442575D8-94E5-4D8E-86BB-CA97B314CA55}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MatrixTest.DAL.Implementation</RootNamespace>
+    <AssemblyName>MatrixTest.DAL.Implementation</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <OutputPath>..\Output\$(Configuration)\Modules\</OutputPath>
+    <LangVersion>latest</LangVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Dev|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Prod|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Migrations\202012291407240_Initial.cs" />
+    <Compile Include="Migrations\202012291407240_Initial.designer.cs">
+      <DependentUpon>202012291407240_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012291450296_ChangeEmailToUniqueIndex.cs" />
+    <Compile Include="Migrations\202012291450296_ChangeEmailToUniqueIndex.designer.cs">
+      <DependentUpon>202012291450296_ChangeEmailToUniqueIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012292215548_AddHeroName.cs" />
+    <Compile Include="Migrations\202012292215548_AddHeroName.designer.cs">
+      <DependentUpon>202012292215548_AddHeroName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModuleInit.cs" />
+    <Compile Include="MainContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MatrixTest.DAL.Contracts\MatrixTest.DAL.Contracts.csproj">
+      <Project>{A2480340-E1AE-49F7-94B2-5B942C6BB3C1}</Project>
+      <Name>MatrixTest.DAL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MatrixTest.Models\MatrixTest.Models.csproj">
+      <Project>{33501DF6-6C14-4135-8271-D3B9557483A8}</Project>
+      <Name>MatrixTest.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aleph1.DI.Contracts">
+      <Version>3.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="Aleph1.Logging">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Aleph1.Utilities">
+      <Version>3.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
+      <Version>3.3.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.7.4</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp">
+      <Version>6.6.13</Version>
+    </PackageReference>
+    <PackageReference Include="TrackerEnabledDbContext">
+      <Version>3.8.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012291407240_Initial.resx">
+      <DependentUpon>202012291407240_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012291450296_ChangeEmailToUniqueIndex.resx">
+      <DependentUpon>202012291450296_ChangeEmailToUniqueIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012292215548_AddHeroName.resx">
+      <DependentUpon>202012292215548_AddHeroName.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

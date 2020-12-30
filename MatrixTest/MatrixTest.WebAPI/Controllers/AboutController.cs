@@ -1,0 +1,27 @@
+﻿using Aleph1.Logging;
+using MatrixTest.WebAPI.Classes;
+using MatrixTest.WebAPI.Models;
+using Aleph1.WebAPI.ExceptionHandler;
+
+using System;
+using System.Reflection;
+using System.Web.Http;
+
+namespace MatrixTest.WebAPI.Controllers
+{
+    /// <summary>some data about the current service</summary>
+    public class AboutController : ApiController
+    {
+        /// <summary>Get data about the current API and user</summary>
+        [Logged, HttpGet, Route("api/About"), FriendlyMessage("התרחשה שגיאה בעת שליפת נתוני מערכת")]
+        public AboutModel About()
+        {
+            return new AboutModel()
+            {
+                Environment = SettingsManager.Environment,
+                APIVersion = Assembly.GetExecutingAssembly()?.GetName()?.Version?.ToString(),
+                Server = SettingsManager.IsProd ? "N/A in Prod" : Environment.MachineName
+            };
+        }
+    }
+}
