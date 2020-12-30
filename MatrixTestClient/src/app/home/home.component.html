@@ -1,0 +1,31 @@
+<div class="a1-column a1-full-height">
+  <div class="a1-row a1-padding navbar a1-justify-items a1-center-items-v">
+    <div class="a1-row a1-spaced-items a1-center-items-v">
+      <i class="fas fa-mask fa-2x"></i>
+      <h2>Matrix Test</h2>
+    </div>
+
+    <h4 class="pointer" (click)="logout()">Logout</h4>
+  </div>
+
+  <h1 *ngIf="heroes.length; else empty" class="a1-margin">My Heroes</h1>
+  <ng-template #empty>
+    <h1 class="a1-margin">Nothing to show...</h1>
+  </ng-template>
+
+  <div class="a1-row flex-wrap a1-long">
+
+    <div class="a1-column a1-margin-lr a1-justify-items hero-card" *ngFor="let hero of heroes | sortHeroes">
+      <div class="a1-row" [ngStyle]="{'background-color': hero.suitColor, 'height': '40px'}"></div>
+      <div class="a1-column a1-spaced-items a1-center-items-v a1-margin">
+        <h1>{{ hero.name }}</h1>
+        <span><strong>Ability</strong> {{ hero.ability | abilityNormalize }}</span>
+        <span><strong>Starting Power </strong> {{ hero.startingPower }}</span>
+        <span><strong>Current Power </strong> {{ hero.currentPower }}</span>
+        <span><strong>Guid </strong> {{ hero.guidID }}</span>
+        <span><strong>First Training </strong> {{ hero.firstTrainingDate | date: 'dd/MM/yyyy HH:mm:ss' }}</span>
+      </div>
+      <button class="btn btn-secondary" (click)="train(hero.id)">Train</button>
+    </div>
+  </div>
+</div>

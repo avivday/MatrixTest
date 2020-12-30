@@ -1,0 +1,16 @@
+<div class="a1-column a1-full-height a1-center-items-h a1-center-items-v">
+
+    <div class="a1-column a1-justify-items a1-padding auth-card">
+      <h1 class="a1-self-center">Register</h1>
+
+      <div class="a1-column a1-spaced-items">
+        <input type="text" placeholder="Fullname" class="input" [(ngModel)]="registerModel.Fullname">
+        <input type="email" placeholder="Email" class="input" [(ngModel)]="registerModel.Email">
+        <input type="password" placeholder="Password" class="input" [(ngModel)]="registerModel.Password">
+      </div>
+
+      <button class="btn btn-primary" (click)="register()">Register</button>
+      <span>Already has an account? <a routerLink="/auth/login">Login</a></span>
+    </div>
+
+  </div>
