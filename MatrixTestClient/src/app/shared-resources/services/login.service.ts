@@ -21,6 +21,6 @@ export class LoginService {
   }
 
   register(registerModel: RegisterModel) {
-    return this.http.post("/api/signup", registerModel);
+    return this.http.post("/api/sign-up", registerModel);
   }
 }

@@ -12,10 +12,10 @@ export class UserGuardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log();
-    const ticketTime = localStorage.getItem("ticketTimestamp")
+    const now = new Date();
+    const ticketTime = localStorage.getItem("ticketTimestamp");
 
-    if (new Date() > new Date(ticketTime)) {
+    if (!ticketTime || now > new Date(+ticketTime)) {
       this.router.navigateByUrl('/auth/login');
       return false;
     }
